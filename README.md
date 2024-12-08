@@ -26,3 +26,13 @@
 ## Использование улитилиты sqlmap на исправленный код, который устойчив к SQL Injection на страницу, полный вывод в файле sqlmap_result_on_correct_code.txt
 
 ![](./Screenshot%20from%202024-12-08%2016-27-27.png)
+
+---------------
+
+# BurpSuite
+При удачной sql injection сервер возвращает ответ 200 - ОК - значит, что сервер успешно выполнил sql injectgion запрос:
+![](./Screenshot%20from%202024-12-08%2017-33-54.png)
+
+При исправленном коде, несмотря на ответ сервера - 200 OK - видим, что сервер возвращает ошибку "Invalid User ID. Please provide a numeric value" на любой sql injection запрос:
+
+![](./Screenshot%20from%202024-12-08%2016-51-36.png)
